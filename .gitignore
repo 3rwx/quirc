@@ -6,6 +6,7 @@ qrtest
 inspect
 libquirc.a
 libquirc.so*
+libquirc.wasm
 .*.swp
 *~
 .DS_Store
