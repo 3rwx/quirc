@@ -22,13 +22,17 @@ PREFIX ?= /usr/local
 LIB_VERSION = 1.0
 
 QUIRC_EXPORTS = \
-	quirc_begin \
-	quirc_count \
-	quirc_destroy \
-	quirc_new \
-	quirc_resize \
-	quirc_strerror \
 	quirc_version \
+	quirc_new \
+	quirc_destroy \
+	quirc_resize \
+	quirc_begin \
+	quirc_end \
+	quirc_strerror \
+	quirc_count \
+	quirc_extract \
+	quirc_decode \
+	quirc_flip \
 	malloc \
 	free
 
