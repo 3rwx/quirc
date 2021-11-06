@@ -27,7 +27,9 @@ QUIRC_EXPORTS = \
 	quirc_new \
 	quirc_resize \
 	quirc_strerror \
-	quirc_version
+	quirc_version \
+	malloc \
+	free
 
 CFLAGS ?= -c -Os -Wall --target=wasm32 --sysroot=$(WASI_SDK_PATH)/share/wasi-sysroot
 LDFLAGS ?= -m wasm32 -L$(WASI_SDK_PATH)/share/wasi-sysroot/lib/wasm32-wasi --no-entry $(addprefix --export=,$(QUIRC_EXPORTS)) -lm -lc
