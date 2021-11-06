@@ -1,4 +1,5 @@
 #include "helpers.h"
+#include "quirc_internal.h"
 
 size_t quirc_code_size() {
     return sizeof(struct quirc_code);
@@ -25,7 +26,7 @@ int quirc_data_get_data_type(struct quirc_data *data) {
 }
 
 void *quirc_data_get_payload(struct quirc_data *data) {
-    return data->payload;
+    return &data->payload[0];
 }
 
 int quirc_data_get_payload_len(struct quirc_data *data) {
