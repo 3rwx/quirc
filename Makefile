@@ -22,6 +22,7 @@ PREFIX ?= /usr/local
 LIB_VERSION = 1.0
 
 QUIRC_EXPORTS = \
+	quirc_begin \
 	quirc_count \
 	quirc_destroy \
 	quirc_new \
