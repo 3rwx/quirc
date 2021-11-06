@@ -52,7 +52,8 @@ LIB_OBJ = \
     lib/decode.o \
     lib/identify.o \
     lib/quirc.o \
-    lib/version_db.o
+    lib/version_db.o \
+	lib/helpers.o
 
 .PHONY: all clean
 
