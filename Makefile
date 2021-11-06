@@ -33,6 +33,15 @@ QUIRC_EXPORTS = \
 	quirc_extract \
 	quirc_decode \
 	quirc_flip \
+	quirc_code_size \
+	quirc_data_size \
+	quirc_data_get_version \
+	quirc_data_get_ecc_level \
+	quirc_data_get_mask \
+	quirc_data_get_data_type \
+	quirc_data_get_payload \
+	quirc_data_get_payload_len \
+	quirc_data_get_eci \
 	malloc \
 	free
 
