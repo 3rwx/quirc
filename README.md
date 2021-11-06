@@ -1,6 +1,8 @@
 Quirc
 =====
 
+Note: This is a trimmed-down version of quirc targeting WebAssembly.
+
 QR codes are a type of high-density matrix barcodes, and quirc is a library for
 extracting and decoding them from images. It has several features which make it
 a good choice for this purpose:
