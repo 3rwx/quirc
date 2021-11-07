@@ -22,16 +22,14 @@ jobs:
 
     - name: Create Build Environment
       run: |
-        curl -L -o /tmp/wasi.deb https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-12/wasi-sdk_12.0_amd64.deb
-        sudo dpkg -i /tmp/wasi.deb
-        rm /tmp/wasi.deb
-
-    - name: Cache Build
-      id: cache-build
-      uses: actions/cache@v2
-      with:
-        path: build
-        key: ubuntu-latest
+        pushd /tmp
+        curl -L -o wasi.deb https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-12/wasi-sdk_12.0_amd64.deb
+        sudo dpkg -i wasi.deb
+        rm wasi.deb
+        curl -L -o binaryen.tar.gz https://github.com/WebAssembly/binaryen/releases/download/version_101/binaryen-version_101-x86_64-linux.tar.gz
+        sudo tar xzvf binaryen.tar.gz
+        sudo mv binaryen-version_101 /opt/binaryen
+        popd
 
     - name: Build
       run: make

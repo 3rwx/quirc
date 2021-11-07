@@ -13,6 +13,7 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 WASI_SDK_PATH ?= /opt/wasi-sdk
+BINARYEN_PATH ?= /opt/binaryen
 
 CC = $(WASI_SDK_PATH)/bin/clang
 LD = $(WASI_SDK_PATH)/bin/wasm-ld
@@ -46,7 +47,7 @@ QUIRC_EXPORTS = \
 	free
 
 CFLAGS ?= -x c -D__wasi_api_h -D__wasilibc_unmodified_upstream -flto -I$(WASI_SDK_PATH)/lib/clang/11.0.0/include -I$(WASI_SDK_PATH)/share/wasi-sysroot/include -c -Os -Wall --target=wasm32 -nostdlib -nostdinc
-LDFLAGS ?= -O9 -m wasm32 -L$(WASI_SDK_PATH)/share/wasi-sysroot/lib/wasm32-wasi --no-entry -lc -lm $(addprefix --export=,$(QUIRC_EXPORTS)) 
+LDFLAGS ?= -O9 -m wasm32 -L$(WASI_SDK_PATH)/share/wasi-sysroot/lib/wasm32-wasi --strip-all --no-entry -lc -lm $(addprefix --export=,$(QUIRC_EXPORTS)) 
 QUIRC_CFLAGS = -Ilib $(CFLAGS)
 LIB_OBJ = \
     lib/decode.o \
@@ -62,6 +63,8 @@ all: libquirc.wasm
 libquirc.wasm: $(LIB_OBJ)
 	rm -f $@
 	$(LD) -o $@ $(LDFLAGS) $(LIB_OBJ)
+	$(BINARYEN_PATH)/bin/wasm-opt -o libquirc.min.wasm -Os libquirc.wasm
+	mv libquirc.min.wasm libquirc.wasm
 
 .c.o:
 	$(CC) $(QUIRC_CFLAGS) -o $@ -c $<
