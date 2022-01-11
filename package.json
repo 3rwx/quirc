@@ -1,0 +1,30 @@
+{
+	"name": "quirc",
+	"version": "1.0.0-alpha.4",
+	"packageManager": "yarn@3.1.1",
+	"devDependencies": {
+		"@types/node": "^17.0.8",
+		"typescript": "^4.5.4"
+	},
+	"files": [
+		"dist",
+		"index.ts",
+		"README.md"
+	],
+	"main": "dist/cjs/index.js",
+	"module": "dist/mjs/index.js",
+	"exports": {
+		".": {
+			"import": "./dist/mjs/index.js",
+			"require": "./dist/cjs/index.js"
+		}
+	},
+	"dependencies": {
+		"web-worker": "^1.2.0"
+	},
+	"scripts": {
+		"build": "yarn build:cjs && yarn build:esm && make && cp libquirc.wasm dist/libquirc.wasm",
+		"build:cjs": "tsc --project ./tsconfig.cjs.json",
+		"build:esm": "tsc --project ./tsconfig.esm.json"
+	}
+}

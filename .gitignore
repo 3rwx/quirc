@@ -11,3 +11,15 @@ libquirc.wasm
 *~
 .DS_Store
 .idea
+.yarn/*
+!.yarn/cache
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+/*.js
+/*.d.ts
+/*.js.txt
+/*.map
+/dist

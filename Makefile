@@ -56,7 +56,7 @@ LIB_OBJ = \
     lib/version_db.o \
 	lib/helpers.o
 
-.PHONY: all clean
+.PHONY: all clean dts
 
 all: libquirc.wasm
 
@@ -78,3 +78,7 @@ clean:
 	rm -f */*.lo
 	rm -f libquirc.wasm
 	rm -rf *.a *.o
+	rm -f *.js
+	rm -rf *.js.txt
+	rm -f *.d.ts
+	rm -f *.map

@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"module": "CommonJS",
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": true,
+		"declaration": true,
+		"target": "ES6",
+		"outDir": "dist/cjs"
+	},
+	"include": [
+		"*.ts"
+	],
+	"exclude": [
+		"node_modules"
+	]
+}

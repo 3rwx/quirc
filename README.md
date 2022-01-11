@@ -1,3 +1,32 @@
+## JS Notes
+
+### Files
+
+Compiled wasm at `dist/libquirc.wasm`.
+ESM module at `dist/esm/index.js`
+CJS module at `dist/cjs/index.js`
+
+### Basic Usage
+
+```typescript
+import { Quirc } from "quirc";
+
+const { instance } = await WebAssembly.instantiateStreaming(fetch("url-to-wasm"));
+const quirc = new Quirc(instance);
+const img = new Uint8Array(10000); // grayscale image
+const width = 100;
+const height = 100;
+// img.byteLength === width * height
+const output = quirc.decode(img, width, height);
+for (let entry of output) {
+	console.log(entry.data.text);
+}
+```
+
+For detail, see index.ts
+
+Original README continues below
+
 Quirc
 =====
 
